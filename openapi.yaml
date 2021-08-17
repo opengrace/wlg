@@ -1,0 +1,985 @@
+openapi: 3.0.0
+info:
+  x-skaffolder-id-project: 611b3b87fb1f2d7735e87134
+  title: wlg
+  description: You can obtain JWT token from login API
+  version: 0.1
+servers:
+  - url: http://localhost:3000/api
+    description: Local server for testing
+paths:
+  /login:
+    post:
+      x-skaffolder-ignore: true
+      summary: Login API
+      security: []
+      tags:
+        - Security
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+              example:
+                username: admin
+                password: 62f264d7ad826f02a8af714c0a54b197935b717656b80461686d450f7b3abde4c553541515de2052b9af70f710f0cd8a1a2d3f4d60aa72608d71a63a9a93c0f5
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+  /verifyToken:
+    post:
+      x-skaffolder-ignore: true
+      summary: Verify token API
+      security: []
+      tags:
+        - Security
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+  /changePassword:
+    post:
+      x-skaffolder-ignore: true
+      summary: Change password API
+      tags:
+        - Security
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                passwordNew:
+                  type: string
+                passwordOld:
+                  type: string
+      responses:
+        "200":
+          description: OK
+  /devices:
+    post:
+      x-skaffolder-id: 611b41e4fb1f2d7735e871f1
+      x-skaffolder-name: create
+      x-skaffolder-id-resource: 611b41a1fb1f2d7735e871d2
+      x-skaffolder-resource: Devices
+      x-skaffolder-crudAction: create
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION create
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION create
+      tags:
+        - Devices
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Devices"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+    get:
+      x-skaffolder-id: 611b41e4fb1f2d7735e871f3
+      x-skaffolder-name: list
+      x-skaffolder-id-resource: 611b41a1fb1f2d7735e871d2
+      x-skaffolder-resource: Devices
+      x-skaffolder-crudAction: list
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION list
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION list
+      tags:
+        - Devices
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Devices"
+  "/devices/{id}":
+    delete:
+      x-skaffolder-id: 611b41e4fb1f2d7735e871f4
+      x-skaffolder-name: delete
+      x-skaffolder-id-resource: 611b41a1fb1f2d7735e871d2
+      x-skaffolder-resource: Devices
+      x-skaffolder-crudAction: delete
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION delete
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION delete
+      tags:
+        - Devices
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+    get:
+      x-skaffolder-id: 611b41e4fb1f2d7735e871ef
+      x-skaffolder-name: get
+      x-skaffolder-id-resource: 611b41a1fb1f2d7735e871d2
+      x-skaffolder-resource: Devices
+      x-skaffolder-crudAction: get
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION get
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION get
+      tags:
+        - Devices
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id resource
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Devices"
+    post:
+      x-skaffolder-id: 611b41e4fb1f2d7735e871ed
+      x-skaffolder-name: update
+      x-skaffolder-id-resource: 611b41a1fb1f2d7735e871d2
+      x-skaffolder-resource: Devices
+      x-skaffolder-crudAction: update
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION update
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION update
+      tags:
+        - Devices
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Devices"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Devices"
+  "/devices/findBy_gps/{key}":
+    get:
+      x-skaffolder-id: 611b41defb1f2d7735e871e6
+      x-skaffolder-name: findBy_gps
+      x-skaffolder-id-resource: 611b41a1fb1f2d7735e871d2
+      x-skaffolder-resource: Devices
+      x-skaffolder-crudAction: findBy_gps
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION findBy_gps
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /findBy_gps/{key}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION findBy_gps
+      tags:
+        - Devices
+      parameters:
+        - name: key
+          x-skaffolder-type: Objectid
+          in: path
+          description: Id of model to search for
+          required: true
+          schema:
+            type: Objectid
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Devices"
+  "/devices/findBy_sim/{key}":
+    get:
+      x-skaffolder-id: 611b41d1fb1f2d7735e871da
+      x-skaffolder-name: findBy_sim
+      x-skaffolder-id-resource: 611b41a1fb1f2d7735e871d2
+      x-skaffolder-resource: Devices
+      x-skaffolder-crudAction: findBy_sim
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION findBy_sim
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /findBy_sim/{key}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION findBy_sim
+      tags:
+        - Devices
+      parameters:
+        - name: key
+          x-skaffolder-type: Objectid
+          in: path
+          description: Id of model to search for
+          required: true
+          schema:
+            type: Objectid
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Devices"
+  /gps:
+    post:
+      x-skaffolder-id: 611b41defb1f2d7735e871e5
+      x-skaffolder-name: create
+      x-skaffolder-id-resource: 611b4155fb1f2d7735e871cc
+      x-skaffolder-resource: GPS
+      x-skaffolder-crudAction: create
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION create
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION create
+      tags:
+        - GPS
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GPS"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Imei:
+                  type: number
+                Models:
+                  type: string
+                SN:
+                  type: number
+    get:
+      x-skaffolder-id: 611b41defb1f2d7735e871ea
+      x-skaffolder-name: list
+      x-skaffolder-id-resource: 611b4155fb1f2d7735e871cc
+      x-skaffolder-resource: GPS
+      x-skaffolder-crudAction: list
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION list
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION list
+      tags:
+        - GPS
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GPS"
+  "/gps/{id}":
+    delete:
+      x-skaffolder-id: 611b41defb1f2d7735e871e9
+      x-skaffolder-name: delete
+      x-skaffolder-id-resource: 611b4155fb1f2d7735e871cc
+      x-skaffolder-resource: GPS
+      x-skaffolder-crudAction: delete
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION delete
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION delete
+      tags:
+        - GPS
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+    get:
+      x-skaffolder-id: 611b41defb1f2d7735e871e1
+      x-skaffolder-name: get
+      x-skaffolder-id-resource: 611b4155fb1f2d7735e871cc
+      x-skaffolder-resource: GPS
+      x-skaffolder-crudAction: get
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION get
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION get
+      tags:
+        - GPS
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id resource
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GPS"
+    post:
+      x-skaffolder-id: 611b41defb1f2d7735e871e3
+      x-skaffolder-name: update
+      x-skaffolder-id-resource: 611b4155fb1f2d7735e871cc
+      x-skaffolder-resource: GPS
+      x-skaffolder-crudAction: update
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION update
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION update
+      tags:
+        - GPS
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GPS"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GPS"
+  /sim:
+    post:
+      x-skaffolder-id: 611b41d1fb1f2d7735e871d7
+      x-skaffolder-name: create
+      x-skaffolder-id-resource: 611b4133fb1f2d7735e871c5
+      x-skaffolder-resource: Sim
+      x-skaffolder-crudAction: create
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION create
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION create
+      tags:
+        - Sim
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Sim"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                SimNo:
+                  type: number
+    get:
+      x-skaffolder-id: 611b41d2fb1f2d7735e871dd
+      x-skaffolder-name: list
+      x-skaffolder-id-resource: 611b4133fb1f2d7735e871c5
+      x-skaffolder-resource: Sim
+      x-skaffolder-crudAction: list
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION list
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION list
+      tags:
+        - Sim
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Sim"
+  "/sim/{id}":
+    delete:
+      x-skaffolder-id: 611b41d2fb1f2d7735e871de
+      x-skaffolder-name: delete
+      x-skaffolder-id-resource: 611b4133fb1f2d7735e871c5
+      x-skaffolder-resource: Sim
+      x-skaffolder-crudAction: delete
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION delete
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION delete
+      tags:
+        - Sim
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+    get:
+      x-skaffolder-id: 611b41d1fb1f2d7735e871d6
+      x-skaffolder-name: get
+      x-skaffolder-id-resource: 611b4133fb1f2d7735e871c5
+      x-skaffolder-resource: Sim
+      x-skaffolder-crudAction: get
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION get
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION get
+      tags:
+        - Sim
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id resource
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Sim"
+    post:
+      x-skaffolder-id: 611b41d1fb1f2d7735e871d5
+      x-skaffolder-name: update
+      x-skaffolder-id-resource: 611b4133fb1f2d7735e871c5
+      x-skaffolder-resource: Sim
+      x-skaffolder-crudAction: update
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION update
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION update
+      tags:
+        - Sim
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Sim"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Sim"
+  "/user/{id}/changePassword":
+    post:
+      x-skaffolder-id: 611b3b88fb1f2d7735e87142
+      x-skaffolder-name: changePassword
+      x-skaffolder-id-resource: 611b3b88fb1f2d7735e8713e
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: 
+      x-skaffolder-crudType: 
+      x-skaffolder-description: Change password of user from admin
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: object
+      x-skaffolder-url: /{id}/changePassword
+      x-skaffolder-roles:
+        - 611b3b88fb1f2d7735e87140
+      summary: Change password of user from admin
+      tags:
+        - User
+      responses:
+        "200":
+          description: OK
+  /user:
+    post:
+      x-skaffolder-id: 611b3b88fb1f2d7735e87145
+      x-skaffolder-name: create
+      x-skaffolder-id-resource: 611b3b88fb1f2d7735e8713e
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: create
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION create
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION create
+      tags:
+        - User
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mail:
+                  type: string
+                name:
+                  type: string
+                password:
+                  type: string
+                roles:
+                  type: string
+                surname:
+                  type: string
+                username:
+                  type: string
+    get:
+      x-skaffolder-id: 611b3b88fb1f2d7735e87141
+      x-skaffolder-name: list
+      x-skaffolder-id-resource: 611b3b88fb1f2d7735e8713e
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: list
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION list
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION list
+      tags:
+        - User
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+  "/user/{id}":
+    delete:
+      x-skaffolder-id: 611b3b88fb1f2d7735e87146
+      x-skaffolder-name: delete
+      x-skaffolder-id-resource: 611b3b88fb1f2d7735e8713e
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: delete
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION delete
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION delete
+      tags:
+        - User
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+    get:
+      x-skaffolder-id: 611b3b88fb1f2d7735e87143
+      x-skaffolder-name: get
+      x-skaffolder-id-resource: 611b3b88fb1f2d7735e8713e
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: get
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION get
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION get
+      tags:
+        - User
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id resource
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+    post:
+      x-skaffolder-id: 611b3b88fb1f2d7735e87144
+      x-skaffolder-name: update
+      x-skaffolder-id-resource: 611b3b88fb1f2d7735e8713e
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: update
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION update
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION update
+      tags:
+        - User
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+security:
+  - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Devices:
+      x-skaffolder-id: 611b41a1fb1f2d7735e871d2
+      x-skaffolder-id-db: 611b3b87fb1f2d7735e87135
+      x-skaffolder-id-entity: 611b41a1fb1f2d7735e871cf
+      x-skaffolder-url: /devices
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+      x-skaffolder-relations:
+        _gps:
+          x-skaffolder-id: 611b41a1fb1f2d7735e871d1
+          x-skaffolder-type: 1:m
+          x-skaffolder-ent1: 611b41a1fb1f2d7735e871cf
+          x-skaffolder-ent2: 611b4155fb1f2d7735e871c8
+        _sim:
+          x-skaffolder-id: 611b41a1fb1f2d7735e871d0
+          x-skaffolder-type: 1:m
+          x-skaffolder-ent1: 611b41a1fb1f2d7735e871cf
+          x-skaffolder-ent2: 611b4133fb1f2d7735e871c3
+      required:
+        - _id
+    GPS:
+      x-skaffolder-id: 611b4155fb1f2d7735e871cc
+      x-skaffolder-id-db: 611b3b87fb1f2d7735e87135
+      x-skaffolder-id-entity: 611b4155fb1f2d7735e871c8
+      x-skaffolder-url: /gps
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        Imei:
+          type: number
+          x-skaffolder-id-attr: 611b4155fb1f2d7735e871c9
+          x-skaffolder-type: Number
+          x-skaffolder-required: true
+        Models:
+          type: string
+          x-skaffolder-id-attr: 611b4155fb1f2d7735e871cb
+          x-skaffolder-type: String
+        SN:
+          type: number
+          x-skaffolder-id-attr: 611b4155fb1f2d7735e871ca
+          x-skaffolder-type: Number
+          x-skaffolder-required: true
+      x-skaffolder-relations: 
+      required:
+        - _id
+        - Imei
+        - SN
+    Sim:
+      x-skaffolder-id: 611b4133fb1f2d7735e871c5
+      x-skaffolder-id-db: 611b3b87fb1f2d7735e87135
+      x-skaffolder-id-entity: 611b4133fb1f2d7735e871c3
+      x-skaffolder-url: /sim
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        SimNo:
+          type: number
+          x-skaffolder-id-attr: 611b4133fb1f2d7735e871c4
+          x-skaffolder-type: Number
+          x-skaffolder-required: true
+      x-skaffolder-relations: 
+      required:
+        - _id
+        - SimNo
+    User:
+      x-skaffolder-id: 611b3b88fb1f2d7735e8713e
+      x-skaffolder-id-db: 611b3b87fb1f2d7735e87135
+      x-skaffolder-id-entity: 611b3b88fb1f2d7735e87136
+      x-skaffolder-url: /user
+      x-skaffolder-type: User
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        mail:
+          type: string
+          x-skaffolder-id-attr: 611b3b88fb1f2d7735e87139
+          x-skaffolder-type: String
+        name:
+          type: string
+          x-skaffolder-id-attr: 611b3b88fb1f2d7735e8713a
+          x-skaffolder-type: String
+        password:
+          type: string
+          x-skaffolder-id-attr: 611b3b88fb1f2d7735e87138
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        roles:
+          type: string
+          x-skaffolder-id-attr: 611b3b88fb1f2d7735e8713c
+          x-skaffolder-type: String
+        surname:
+          type: string
+          x-skaffolder-id-attr: 611b3b88fb1f2d7735e8713b
+          x-skaffolder-type: String
+        username:
+          type: string
+          x-skaffolder-id-attr: 611b3b88fb1f2d7735e87137
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+      x-skaffolder-relations: 
+      required:
+        - _id
+        - password
+        - username
+  x-skaffolder-db:
+    - x-skaffolder-id: 611b3b87fb1f2d7735e87135
+      x-skaffolder-name: wlg_db
+  x-skaffolder-page:
+    - x-skaffolder-id: 611b41e4fb1f2d7735e871ec
+      x-skaffolder-name: DevicesEdit
+      x-skaffolder-url: /deviceses/{id}
+      x-skaffolder-template: Edit_Crud
+      x-skaffolder-resource: 611b41a1fb1f2d7735e871d2
+      x-skaffolder-services:
+        - 611b41e4fb1f2d7735e871f1
+        - 611b41e4fb1f2d7735e871ed
+        - 611b41e4fb1f2d7735e871ef
+        - 611b41d2fb1f2d7735e871dd
+        - 611b41defb1f2d7735e871ea
+      x-skaffolder-nesteds: 
+      x-skaffolder-links: 
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 611b41e4fb1f2d7735e871f2
+      x-skaffolder-name: DevicesList
+      x-skaffolder-url: /deviceses
+      x-skaffolder-template: List_Crud
+      x-skaffolder-resource: 611b41a1fb1f2d7735e871d2
+      x-skaffolder-services:
+        - 611b41e4fb1f2d7735e871f4
+        - 611b41e4fb1f2d7735e871f3
+      x-skaffolder-nesteds: 
+      x-skaffolder-links:
+        - 611b41e4fb1f2d7735e871ec
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 611b41ddfb1f2d7735e871e0
+      x-skaffolder-name: GPSEdit
+      x-skaffolder-url: /gpses/{id}
+      x-skaffolder-template: Edit_Crud
+      x-skaffolder-resource: 611b4155fb1f2d7735e871cc
+      x-skaffolder-services:
+        - 611b41defb1f2d7735e871e5
+        - 611b41defb1f2d7735e871e3
+        - 611b41defb1f2d7735e871e1
+        - 611b41defb1f2d7735e871e6
+      x-skaffolder-nesteds: 
+      x-skaffolder-links: 
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 611b41defb1f2d7735e871e8
+      x-skaffolder-name: GPSList
+      x-skaffolder-url: /gpses
+      x-skaffolder-template: List_Crud
+      x-skaffolder-resource: 611b4155fb1f2d7735e871cc
+      x-skaffolder-services:
+        - 611b41defb1f2d7735e871e9
+        - 611b41defb1f2d7735e871ea
+      x-skaffolder-nesteds: 
+      x-skaffolder-links:
+        - 611b41ddfb1f2d7735e871e0
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 611b3b88fb1f2d7735e8713d
+      x-skaffolder-name: Home
+      x-skaffolder-url: /home
+      x-skaffolder-template: 
+      x-skaffolder-resource: 
+      x-skaffolder-services: 
+      x-skaffolder-nesteds: 
+      x-skaffolder-links:
+        - 611b41d1fb1f2d7735e871dc
+        - 611b41defb1f2d7735e871e8
+        - 611b41e4fb1f2d7735e871f2
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 611b41d1fb1f2d7735e871d4
+      x-skaffolder-name: SimEdit
+      x-skaffolder-url: /sims/{id}
+      x-skaffolder-template: Edit_Crud
+      x-skaffolder-resource: 611b4133fb1f2d7735e871c5
+      x-skaffolder-services:
+        - 611b41d1fb1f2d7735e871d7
+        - 611b41d1fb1f2d7735e871d5
+        - 611b41d1fb1f2d7735e871d6
+        - 611b41d1fb1f2d7735e871da
+      x-skaffolder-nesteds: 
+      x-skaffolder-links: 
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 611b41d1fb1f2d7735e871dc
+      x-skaffolder-name: SimList
+      x-skaffolder-url: /sims
+      x-skaffolder-template: List_Crud
+      x-skaffolder-resource: 611b4133fb1f2d7735e871c5
+      x-skaffolder-services:
+        - 611b41d2fb1f2d7735e871de
+        - 611b41d2fb1f2d7735e871dd
+      x-skaffolder-nesteds: 
+      x-skaffolder-links:
+        - 611b41d1fb1f2d7735e871d4
+      x-skaffolder-roles: []
+  x-skaffolder-roles: 
+    - x-skaffolder-id: 611b3b88fb1f2d7735e87140
+      x-skaffolder-name: ADMIN
